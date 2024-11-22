@@ -1,6 +1,6 @@
 import React from 'react'
 import { SafeAreaView, Text, StyleSheet, ImageBackground, StatusBar, View } from 'react-native'
-import { Feather } from '@expo/vector-icons'
+import IconText from '@/components/IconText'
 
 const styles=StyleSheet.create({
     container:{
@@ -26,8 +26,6 @@ const styles=StyleSheet.create({
         padding: 10
     },
     popWrapper:{
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'center',
         marginTop: 30
     },
@@ -35,35 +33,35 @@ const styles=StyleSheet.create({
         fontSize: 25,
         marginLeft: 7.5,
         color: 'red',
-        fontWeight: 'bold'
     },
     riseSetWrapper:{
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-around',
         marginTop: 30
     },
     riseSetText:{
         fontSize: 20,
         color: 'white',
-        fontWeight: 'bold'
+    },
+    rowLayout:{
+        flexDirection: 'row',
+        alignItems: 'center',
     }
 })
 const City = () => {
+
+    const {container, imageLayout, cityName, countryName, cityText, popWrapper, popText, riseSetWrapper, riseSetText, rowLayout}=styles
+
   return (
-    <SafeAreaView style={styles.container}>
-        <ImageBackground source={require('../assets/images/city-bg.jpg')} style={styles.imageLayout}>
-            <Text style={[styles.cityName, styles.cityText]}>London</Text>
-            <Text style={[styles.cityText, styles.countryName ]}>UK</Text>
-            <View style={styles.popWrapper}>
-                <Feather name={'user'} size={50} color={'red'}/>
-                <Text style={styles.popText}>11000</Text>
+    <SafeAreaView style={container}>
+        <ImageBackground source={require('../assets/images/city-bg.jpg')} style={imageLayout}>
+            <Text style={[cityName, cityText]}>London</Text>
+            <Text style={[cityText, countryName ]}>UK</Text>
+            <View style={[popWrapper, rowLayout]}>
+                <IconText iconName={'user'} iconColor={'red'} bodyText={'8000'} bodyTextStyles={popText}/>
             </View>
-            <View style={styles.riseSetWrapper}>
-                <Feather name={'sunrise'} size={50} color={'white'}/>
-                <Text style={styles.riseSetText}>10:45:58am</Text>
-                <Feather name={'sunset'} size={50} color={'white'}/>
-                <Text style={styles.riseSetText}>17:28:23pm</Text>
+            <View style={[riseSetWrapper, rowLayout]}>
+                <IconText iconName={'sunrise'} iconColor={'white'} bodyText={'10:45:58am'} bodyTextStyles={riseSetText}/>
+                <IconText iconName={'sunset'} iconColor={'white'} bodyText={'17:28:23pm'} bodyTextStyles={riseSetText}/>
             </View>
         </ImageBackground>
     </SafeAreaView>
