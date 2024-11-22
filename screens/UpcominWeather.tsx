@@ -1,6 +1,6 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, FlatList, View, StatusBar, ImageBackground } from 'react-native'
-import { Feather } from '@expo/vector-icons'
+import { SafeAreaView, StyleSheet, Text, FlatList, StatusBar, ImageBackground } from 'react-native'
+import ListItem from '../components/ListItem'
 
 const styles=StyleSheet.create({
   container:{
@@ -8,24 +8,13 @@ const styles=StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'royalblue'
   },
-  item:{
-    backgroundColor: 'pink',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderWidth: 5
+  heading:{
+    fontSize: 30,
+    color: 'white',
+    textAlign: 'center',
+    padding: 10
   },
-  temp:{
-    fontSize: 15,
-    color: 'white'
-  },
-  date:{
-    fontSize: 12,
-    color: 'black'
-  },
+
   image:{
     flex: 1,
   }
@@ -70,24 +59,6 @@ const DATA=[
   }
 ]
 
-interface ItemProps {
-  dt_txt: string;
-  min: number;
-  max: number;
-  condition: string;
-}
-
-const Item = (props: ItemProps) => {
-  const {dt_txt, min, max, condition}=props
-  return(
-    <View style={styles.item}>
-      <Feather name="cloud" size={50} color="black" />
-      <Text style={styles.date}>{dt_txt}</Text>
-      <Text style={styles.temp}>{min}</Text>
-      <Text style={styles.temp}>{max}</Text>
-    </View>
-  )
-}
 
 export const UpcominWeather = () => {
 
@@ -103,13 +74,15 @@ export const UpcominWeather = () => {
   }
 
   const renderItem = ({ item }: { item: WeatherItem }) => (
-    <Item condition={item.weather[0].main} dt_txt={item.dt_txt} min={item.main.temp_min} max={item.main.temp_max} />
+    <ListItem condition={item.weather[0].main} dt_txt={item.dt_txt} min={item.main.temp_min} max={item.main.temp_max} />
   )
 
+  const { container, heading, image } = styles
+
   return (
-    <SafeAreaView style={styles.container}>
-        <Text>Upcoming Weather</Text>
-        <ImageBackground source={require('../assets/images/clouds.jpg')} style={styles.image}>
+    <SafeAreaView style={container}>
+        <ImageBackground source={require('../assets/images/clouds.jpg')} style={image}>
+        <Text style={heading}>Upcoming Weather</Text>
         <FlatList
           data={DATA}
           renderItem={renderItem}

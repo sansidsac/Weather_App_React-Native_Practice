@@ -1,5 +1,6 @@
-import CurrentWeather from "@/components/CurrentWeather";
-import { UpcominWeather } from "@/components/UpcominWeather";
+import CurrentWeather from "@/screens/CurrentWeather";
+import City from "@/screens/City";
+import { UpcominWeather } from "@/screens/UpcominWeather";
 import {View, StyleSheet} from "react-native";
 
 const styles=StyleSheet.create({
@@ -12,7 +13,7 @@ export default function Index() {
   return (
     <>
       <View style={styles.container}>
-        <UpcominWeather />
+        <City />
       </View>
     </>
   );
