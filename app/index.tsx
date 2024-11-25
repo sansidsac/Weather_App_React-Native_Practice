@@ -13,7 +13,7 @@ export default function Index() {
   return (
     <>
       <View style={styles.container}>
-        <City />
+        <CurrentWeather />
       </View>
     </>
   );
