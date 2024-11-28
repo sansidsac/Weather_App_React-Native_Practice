@@ -15,25 +15,33 @@ interface ItemProps {
 
 const styles=StyleSheet.create({
     temp:{
-        fontSize: 15,
-        color: 'white'
+      fontSize: 18,
+      color: '#FFFFFF',
+      fontWeight: 'bold',
       },
       date:{
-        fontSize: 12,
-        color: 'black'
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#02003a'
       },
       item:{
-        backgroundColor: 'pink',
-        padding: 20,
+        backgroundColor: '#4682B4',
+        padding: 15,
         marginVertical: 8,
         marginHorizontal: 16,
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        borderWidth: 5
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 5, 
       },
       dateTextWrapper:{
         flexDirection: 'column',
+        alignItems: 'flex-start'
       }
 })
 
@@ -46,7 +54,7 @@ const ListItem = (props: ItemProps) => {
     const {dt_txt, min, max, condition}=props
     return(
       <View style={item}>
-        <Feather name={weatherType[condition]?.icon as keyof typeof Feather.glyphMap} size={50} color="black" />
+        <Feather name={weatherType[condition]?.icon as keyof typeof Feather.glyphMap} size={50} color='#ffffff' />
         <View style={dateTextWrapper}>
           <Text style={date}>{moment(dt_txt).format('dddd')}</Text>
           <Text style={date}>{moment(dt_txt).format('h:mm:ss a')}</Text>

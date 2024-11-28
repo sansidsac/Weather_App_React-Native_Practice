@@ -8,24 +8,34 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 10,
+    padding: 20,
+    margin: 20,
   },
   wrapper: {
     flex: 1,
   },
   tempStyles: {
-    color: "black",
+    color: "white",
     fontSize: 48,
+    fontWeight: 'bold',
   },
   feels: {
-    color: "black",
+    color: "white",
     fontSize: 30,
+    fontWeight: 'bold',
   },
   highLow: {
-    color: "black",
+    color: "white",
     fontSize: 20,
+    fontWeight: 'bold',
   },
   highLowWrapper: {
     flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
   },
   bodyWrapper: {
     justifyContent: "flex-end",
@@ -35,9 +45,14 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 43,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   message: {
     fontSize: 25,
+    color: 'white',
+    textAlign: 'center',
   },
 });
 

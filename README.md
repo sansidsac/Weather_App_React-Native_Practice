@@ -1,50 +1,111 @@
-# Welcome to your Expo app 👋
+# Weather App 🌦️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to the Weather App! This is a React Native project created with [Expo](https://expo.dev) that provides current weather, upcoming weather forecasts, and city information.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+The Weather App is designed to provide users with up-to-date weather information, including current weather conditions, upcoming weather forecasts, and detailed city information. The app uses the OpenWeatherMap API to fetch weather data.
+
+## Features
+
+- View current weather conditions
+- View upcoming weather forecasts
+- Detailed city information including population, sunrise, and sunset times
+- Responsive design for different screen sizes
+
+## Installation
+
+To get started with the Weather App, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/weather-app.git
+   cd weather-app
+   ```
+
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Create a `.env` file in the root directory and add your OpenWeatherMap API key:
 
    ```bash
-    npx expo start
+   APIKEY=your_api_key_here
    ```
 
-In the output, you'll find options to open the app in a
+4. Start the app:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npx expo start
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Usage
 
-## Get a fresh project
+In the output, you'll find options to open the app in a:
 
-When you're ready, run:
+- Development build
+- Android emulator
+- iOS simulator
+- Web browser
 
-```bash
-npm run reset-project
+## Technologies Used
+
+- React Native
+- Expo
+- TypeScript
+- OpenWeatherMap API
+- React Navigation
+- Moment.js
+
+## Project Structure
+
+```
+.
+├── assets
+│   ├── images
+│   │   ├── icon.png
+│   │   ├── splash.png
+│   │   ├── adaptive-icon.png
+│   │   └── clouds.jpg
+├── components
+│   ├── IconText.tsx
+│   ├── ListItem.tsx
+│   ├── RowText.tsx
+│   └── Tabs.tsx
+├── hooks
+│   └── useGetWeather.ts
+├── screens
+│   ├── City.tsx
+│   ├── CurrentWeather.tsx
+│   └── UpcomingWeather.tsx
+├── utilities
+│   └── weatherType.ts
+├── App.tsx
+├── app.json
+├── babel.config.js
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contributing
 
-## Learn more
+Contributions are welcome! Please read the contributing guidelines first.
 
-To learn more about developing your project with Expo, look at the following resources:
+## License
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.

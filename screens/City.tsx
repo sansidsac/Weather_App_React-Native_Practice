@@ -6,42 +6,53 @@ import moment from 'moment'
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        marginTop: StatusBar.currentHeight || 0,
+        paddingTop: 10,
+        backgroundColor: '#1E90FF',
     },
     imageLayout:{
         flex:1,
         resizeMode: "cover",
+        justifyContent: 'center',
     },
     cityName:{
         fontSize: 40,
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10,
     },
     countryName:{
         fontSize: 30,
-        color: 'black'
+        color: '#FFFFFF',
+        textAlign: 'center',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10,
     },
     cityText:{
-        justifyContent: 'center',
-        alignSelf: 'center',
-        fontWeight: 'bold',
-        color: 'white',
-        padding: 10
+        marginVertical: 10,
     },
     popWrapper:{
+        flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 30
+        alignItems: 'center',
+        marginVertical: 10,
     },
     popText:{
-        fontSize: 25,
-        marginLeft: 7.5,
-        color: 'red',
+        fontSize: 20,
+        color: '#FFFFFF',
+        marginLeft: 10,
     },
     riseSetWrapper:{
+        flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: 30
+        marginVertical: 10,
     },
     riseSetText:{
         fontSize: 20,
-        color: 'white',
+        color: '#FFFFFF',
     },
     rowLayout:{
         flexDirection: 'row',
@@ -63,19 +74,19 @@ const City: React.FC<{ weatherData: WeatherData }> = ({ weatherData }) => {
     const {name, country, population, sunrise, sunset}=weatherData
 
   return (
-    <SafeAreaView style={container}>
-        <ImageBackground source={require('../assets/images/city-bg.jpg')} style={imageLayout}>
+    // <ImageBackground source={require('../assets/images/city-bg.jpg')} style={imageLayout}>
+        <SafeAreaView style={container}>
             <Text style={[cityName, cityText]}>{name}</Text>
             <Text style={[cityText, countryName ]}>{country}</Text>
             <View style={[popWrapper, rowLayout]}>
                 <IconText iconName={'user'} iconColor={'red'} bodyText={`Population: ${population}`} bodyTextStyles={popText}/>
             </View>
             <View style={[riseSetWrapper, rowLayout]}>
-                <IconText iconName={'sunrise'} iconColor={'white'} bodyText={moment(sunrise).format('h:mm:ss a')} bodyTextStyles={riseSetText}/>
-                <IconText iconName={'sunset'} iconColor={'white'} bodyText={moment(sunset).format('h:mm:ss a')} bodyTextStyles={riseSetText}/>
+                <IconText iconName={'sunrise'} iconColor={'orange'} bodyText={moment(sunrise).format('h:mm:ss a')} bodyTextStyles={riseSetText}/>
+                <IconText iconName={'sunset'} iconColor={'orange'} bodyText={moment(sunset).format('h:mm:ss a')} bodyTextStyles={riseSetText}/>
             </View>
-        </ImageBackground>
-    </SafeAreaView>
+        </SafeAreaView>
+    // </ImageBackground>
   )
 }
 
