@@ -32,8 +32,10 @@ export default function Tabs({ weather }: WeatherProps) {
       options={{tabBarIcon:({focused})=><Feather name={'droplet'} size={25} color={focused?'tomato':'black'}/> }}>
         {()=><CurrentWeather weatherData={weather.list[0]}/>}
       </Tab.Screen>
-      <Tab.Screen name="UpcominWeather" component={UpcominWeather} 
-       options={{tabBarIcon:({focused})=><Feather name={'clock'} size={25} color={focused?'tomato':'black'}/> }} />
+      <Tab.Screen name="UpcominWeather"
+       options={{tabBarIcon:({focused})=><Feather name={'clock'} size={25} color={focused?'tomato':'black'}/> }}>
+         {()=><UpcominWeather weatherData={weather.list}/>}
+       </Tab.Screen> 
       <Tab.Screen name="City" component={City}  
        options={{tabBarIcon:({focused})=><Feather name={'home'} size={25} color={focused?'tomato':'black'}/> }} />
     </Tab.Navigator>

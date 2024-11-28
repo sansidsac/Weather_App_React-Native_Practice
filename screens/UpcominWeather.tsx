@@ -20,58 +20,23 @@ const styles=StyleSheet.create({
   }
 })
 
-const DATA=[
-  {
-    "dt_txt": "2022-08-30 15:00:00",
-    "main": {
-      "temp_max": 297.87,
-      "temp_min": 296.76,
-    },
-    "weather": [
-      {
-        "main": "Rain",
-      }
-    ],
-  },
-  {
-    "dt_txt": "2022-08-30 16:00:00",
-    "main": {
-      "temp_max": 297.87,
-      "temp_min": 296.76,
-    },
-    "weather": [
-      {
-        "main": "Rain",
-      }
-    ],    
-  },
-  {
-    "dt_txt": "2022-08-30 17:00:00",
-    "main": {
-      "temp_max": 297.87,
-      "temp_min": 296.76,
-    },
-    "weather": [
-      {
-        "main": "Rain",
-      }
-    ],
-  }
-]
 
+interface WeatherItem {
+  dt_txt: string;
+  main: {
+    temp_max: number;
+    temp_min: number;
+  };
+  weather: {
+    main: 'Thunderstorm' | 'Drizzle' | 'Rain' | 'Snow' | 'Clear' | 'Clouds' | 'Haze' | 'Mist';
+  }[];
+}
 
-export const UpcominWeather = () => {
+interface UpcominWeatherProps {
+  weatherData: WeatherItem[];
+}
 
-  interface WeatherItem {
-    dt_txt: string;
-    main: {
-      temp_max: number;
-      temp_min: number;
-    };
-    weather: {
-      main: string;
-    }[];
-  }
+export const UpcominWeather = ({ weatherData }: UpcominWeatherProps) => {
 
   const renderItem = ({ item }: { item: WeatherItem }) => (
     <ListItem condition={item.weather[0].main} dt_txt={item.dt_txt} min={item.main.temp_min} max={item.main.temp_max} />
@@ -82,9 +47,8 @@ export const UpcominWeather = () => {
   return (
     <SafeAreaView style={container}>
         <ImageBackground source={require('../assets/images/clouds.jpg')} style={image}>
-        <Text style={heading}>Upcoming Weather</Text>
         <FlatList
-          data={DATA}
+          data={weatherData}
           renderItem={renderItem}
           keyExtractor={(item)=>item.dt_txt}
         />

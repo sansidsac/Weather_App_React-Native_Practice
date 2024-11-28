@@ -1,6 +1,16 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import { Feather } from '@expo/vector-icons'
+import { weatherType } from '@/utilities/weatherType'
+
+type WeatherCondition = keyof typeof weatherType;
+
+interface ItemProps {
+  dt_txt: string;
+  min: number;
+  max: number;
+  condition: WeatherCondition;
+}
 
 const styles=StyleSheet.create({
     temp:{
@@ -24,12 +34,7 @@ const styles=StyleSheet.create({
 })
 
 
-interface ItemProps {
-    dt_txt: string;
-    min: number;
-    max: number;
-    condition: string;
-  }
+
 
 const {temp, date, item}=styles
 
@@ -37,10 +42,9 @@ const ListItem = (props: ItemProps) => {
     const {dt_txt, min, max, condition}=props
     return(
       <View style={item}>
-        <Feather name="cloud" size={50} color="black" />
+        <Feather name={weatherType[condition].icon as keyof typeof Feather.glyphMap} size={50} color="black" />
         <Text style={date}>{dt_txt}</Text>
-        <Text style={temp}>{min}</Text>
-        <Text style={temp}>{max}</Text>
+        <Text style={temp}>{`${Math.round(min)}° / ${Math.round(max)}°`}</Text>
       </View>
     )
 }
