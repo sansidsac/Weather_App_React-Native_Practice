@@ -2,41 +2,41 @@ export const weatherType = {
     Thunderstorm:{
         icon:'zap',
         message:'It could get noisy',
-        backGroundColor:'#000000',
+        backgroundColor:'#000000',
     },
     Drizzle:{
         icon:'cloud-rain',
         message:'It might rain a little',
-        backGroundColor:'#36454f',
+        backgroundColor:'#36454f',
     },
     Rain:{
         icon:'umbrella',
         message:'You will need an umbrella',
-        backGroundColor:'#0000ff',
+        backgroundColor:'#0000ff',
     },
     Snow:{
         icon:'cloud-snow',
         message:'Lets build a snowman',
-        backGroundColor:'#7f6065',
+        backgroundColor:'#7f6065',
     },
     Clear:{
         icon:'sun',
         message:'Its perfect t-shirt weather',
-        backGroundColor:'#e47200',
+        backgroundColor:'#e47200',
     },
     Clouds:{
         icon:'cloud',
         message:'You could live in the clouds',
-        backGroundColor:'#363636',
+        backgroundColor:'#363636',
     },
     Haze:{
         icon:'wind',
         message:'It might be a bit damp',
-        backGroundColor:'#58586e',
+        backgroundColor:'#58586e',
     },
     Mist:{
         icon:'align-justify',
         message:'It might be hard to see',
-        backGroundColor:'#3e3e37',
+        backgroundColor:'#3e3e37',
     },
 }

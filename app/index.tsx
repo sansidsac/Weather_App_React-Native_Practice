@@ -19,10 +19,10 @@ export default function Index() {
 
   const { container } = styles;
 
-  if(weather){
-    console.log(weather)
-    console.log(error)
-    console.log(loading)
+  if(weather && weather.list){
+    return (
+      <Tabs weather={weather}/>
+    );
   }
 
   if(loading){
@@ -35,9 +35,6 @@ export default function Index() {
   }
 
 
-  return (
-    <Tabs/>
-  );
 }
 
 

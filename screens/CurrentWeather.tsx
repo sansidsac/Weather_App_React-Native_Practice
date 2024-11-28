@@ -5,7 +5,6 @@ import { weatherType } from "@/utilities/weatherType";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "pink",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "lightblue",
   },
-  temp: {
+  tempStyles: {
     color: "black",
     fontSize: 48,
   },
@@ -43,27 +42,47 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function CurrentWeather() {
 
-  const{container, wrapper, temp, feels, highLow, highLowWrapper, bodyWrapper, description, message}=styles
+
+interface WeatherData {
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_max: number;
+    temp_min: number;
+  };
+  weather: {
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
+  }[];
+}
+
+export default function CurrentWeather({ weatherData }: { weatherData: WeatherData }) {
+
+  const{container, wrapper, tempStyles, feels, highLow, highLowWrapper, bodyWrapper, description, message}=styles
+
+  const{main:{temp, feels_like, temp_max, temp_min}, weather}=weatherData
+  const weathercondition = weather[0].main as keyof typeof weatherType
 
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weathercondition].backgroundColor}]}>
       <View style={container}>
-        <Feather name="sun" size={50} color="yellow" />
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Feather name={weatherType[weathercondition].icon as keyof typeof Feather.glyphMap} size={50} color="white" />
+        <Text style={tempStyles}>{temp}</Text>
+        <Text style={feels}>{`Feels like ${feels_like}`}</Text>
         <RowText
-          messageOne="High: 8"
-          messageTwo="Low: 6"
+          messageOne={`High: ${temp_max}`}
+          messageTwo={`Low: ${temp_min}`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
         />
       </View>
       <RowText
-        messageOne="It's Sunny"
-        messageTwo={weatherType['Clear'].message}
+        messageOne={weather[0].description}
+        messageTwo={weatherType[weathercondition].message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}

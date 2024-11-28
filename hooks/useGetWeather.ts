@@ -8,14 +8,14 @@ export const useGetWeather = () => {
   
     const [loading, setLoading] = useState(true);
     const[error, setError]=useState<string | null>(null);
-    const[weather, setWeather]=useState([]);
+    const[weather, setWeather]=useState<any>({});
     const[lat, setLat]=useState<number | null>(null);
     const[lon, setLon]=useState<number | null>(null);
   
     const fetchWeather = async () => {
       try{
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
         );
         const data = await response.json();
         setWeather(data);
