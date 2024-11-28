@@ -46,7 +46,7 @@ const ListItem = (props: ItemProps) => {
     const {dt_txt, min, max, condition}=props
     return(
       <View style={item}>
-        <Feather name={weatherType[condition].icon as keyof typeof Feather.glyphMap} size={50} color="black" />
+        <Feather name={weatherType[condition]?.icon as keyof typeof Feather.glyphMap} size={50} color="black" />
         <View style={dateTextWrapper}>
           <Text style={date}>{moment(dt_txt).format('dddd')}</Text>
           <Text style={date}>{moment(dt_txt).format('h:mm:ss a')}</Text>

@@ -1,9 +1,7 @@
 import Tabs from "@/components/Tabs";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
-import { useState, useEffect } from "react";
-import * as Location from "expo-location";
-import Constants from 'expo-constants';
 import { useGetWeather } from "@/hooks/useGetWeather";
+import ErrorItem from "@/components/ErrorItem";
 
 const styles= StyleSheet.create({
   container:{
@@ -19,20 +17,23 @@ export default function Index() {
 
   const { container } = styles;
 
-  if(weather && weather.list){
+  if(weather && weather.list && !loading){
     return (
       <Tabs weather={weather}/>
     );
   }
 
-  if(loading){
-    return(
-      <View style={container}>
-        <ActivityIndicator size="large" color="blue"/>
-      </View>
-    )
 
-  }
+  return(
+    <View style={container}>
+      {error? (
+        <ErrorItem/>
+      ):(
+        <ActivityIndicator size="large" color="blue"/>
+      )}
+    </View>
+  )
+
 
 
 }

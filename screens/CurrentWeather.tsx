@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    backgroundColor: "lightblue",
   },
   tempStyles: {
     color: "black",
@@ -35,10 +34,10 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   description: {
-    fontSize: 48,
+    fontSize: 43,
   },
   message: {
-    fontSize: 30,
+    fontSize: 25,
   },
 });
 
@@ -64,12 +63,16 @@ export default function CurrentWeather({ weatherData }: { weatherData: WeatherDa
   const{container, wrapper, tempStyles, feels, highLow, highLowWrapper, bodyWrapper, description, message}=styles
 
   const{main:{temp, feels_like, temp_max, temp_min}, weather}=weatherData
-  const weathercondition = weather[0].main as keyof typeof weatherType
+  const weathercondition = weather[0]?.main as keyof typeof weatherType
+
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   return (
-    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weathercondition].backgroundColor}]}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weathercondition]?.backgroundColor}]}>
       <View style={container}>
-        <Feather name={weatherType[weathercondition].icon as keyof typeof Feather.glyphMap} size={50} color="white" />
+        <Feather name={weatherType[weathercondition]?.icon as keyof typeof Feather.glyphMap} size={50} color="white" />
         <Text style={tempStyles}>{`${temp}°`}</Text>
         <Text style={feels}>{`Feels like ${feels_like}°`}</Text>
         <RowText
@@ -81,8 +84,8 @@ export default function CurrentWeather({ weatherData }: { weatherData: WeatherDa
         />
       </View>
       <RowText
-        messageOne={weather[0].description}
-        messageTwo={weatherType[weathercondition].message}
+        messageOne={capitalizeFirstLetter(weather[0]?.description)}
+        messageTwo={weatherType[weathercondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
