@@ -35,7 +35,7 @@
       "typedRoutes": true
     },
     "extra": {
-      "APIKEY": "851a955ad7169c87895f51858b6139b2",
+      "APIKEY": "YourAPIKEYgoesHere",
       "router": {
         "origin": false
       },
